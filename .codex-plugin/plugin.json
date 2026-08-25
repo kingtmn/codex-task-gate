@@ -1,0 +1,40 @@
+{
+  "name": "codex-task-gate",
+  "version": "1.0.0",
+  "description": "A Codex pre-coding gate that inspects first, treats proposed tech as unverified, and shrinks broad requests to a minimum sufficient working path.",
+  "author": {
+    "name": "kingtmn",
+    "url": "https://github.com/kingtmn"
+  },
+  "homepage": "https://github.com/kingtmn/codex-task-gate",
+  "repository": "https://github.com/kingtmn/codex-task-gate",
+  "license": "MIT",
+  "keywords": [
+    "codex",
+    "skill",
+    "task-gate",
+    "minimum-viable",
+    "overengineering"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Codex Task Gate",
+    "shortDescription": "Gate coding work to a minimum sufficient path",
+    "longDescription": "A lightweight Codex skill that stops incomplete wording from becoming a large codebase. It inspects the repo and authoritative sources first, treats user-named technologies as proposals, and defaults broad requests to a runnable, verifiable path.",
+    "developerName": "kingtmn",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/kingtmn/codex-task-gate",
+    "privacyPolicyURL": "https://github.com/kingtmn/codex-task-gate/blob/main/LICENSE",
+    "termsOfServiceURL": "https://github.com/kingtmn/codex-task-gate/blob/main/LICENSE",
+    "defaultPrompt": [
+      "Use $codex-task-gate. Shrink this to a minimum sufficient working path.",
+      "The site is slow. Add Redis. Diagnose first.",
+      "帮我做一个知识库。 Do not overbuild."
+    ],
+    "brandColor": "#D4A017"
+  }
+}
