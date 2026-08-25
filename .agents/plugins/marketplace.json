@@ -1,0 +1,20 @@
+{
+  "name": "codex-task-gate",
+  "interface": {
+    "displayName": "Codex Task Gate"
+  },
+  "plugins": [
+    {
+      "name": "codex-task-gate",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

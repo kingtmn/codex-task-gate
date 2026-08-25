@@ -8,94 +8,173 @@
 /_____/   U     先看仓库。最小能跑。验证了再说。
 ```
 
-这是一只给 [Codex](https://github.com/openai/codex) 用的看门狗。
+Codex 写代码很快。
+它也能很快把错误理解写成大量代码。
 
-不是更聪明的大脑，是更会拦的门。
+**Codex Task Gate 拦在那之前。**
 
-普通用户不该先学会画架构图，才能让 AI 写代码。你说「帮我做一个知识库」，它不该立刻上向量库、权限、Agent 和可观测性平台。它该先看仓库，收成一条能录入、能检索、能看见结果、能验证的路。
+不是更聪明的大脑，是更会看门的狗。
 
 [English](./README.md) | 简体中文
 
-## 为什么需要看门狗
+## 为什么要装
 
-Coding agent 翻车姿势很固定，而且很狗：
+普通用户说：
 
-- 网站慢 → 直接上 Redis
-- 模块乱 → 直接重写
-- 部署烦 → 直接微服务
-- 需求宽 → 直接未来架构
+> 帮我做个知识库。
 
-然后你得到一堆明天才会用到的系统，今天还跑不起来。
+没有门禁时，这句话就够 Agent 脑补：
 
-`codex-task-gate` 只做一件事：在非平凡改代码开始前，确认 Codex 已经有足够信息动手，并把任务压成 **当前最小充分、可运行、可验证** 的实现路径。
+- 向量库
+- 用户和权限
+- Agent 和工作流
+- 可观测性
+- 为想象中的规模准备的架构
 
-它不理解世界。它只问：
+真正的问题不是 Codex 不会写代码。
 
-1. 要改变什么可观察行为？
-2. 哪些事实 Codex 自己能查到？
-3. 哪个决策真正属于用户？
-4. 现在最小充分、能验证的解是什么？
+而是：**意图还含糊时，代码已经写得很精确。**
 
-## 它会怎样看门
+装它，是为了让 Codex 少猜、少问、少把小需求做成大系统，先交出一条能跑、能验的路。
 
-| 场景 | 狗子的反应 |
+## 没有它 / 有它
+
+**没有 Task Gate**
+
+```text
+宽泛请求
+  → 脑补需求
+  → 先上架构
+  → 一堆文件
+  → 可能是错的系统
+```
+
+**有 Task Gate**
+
+```text
+宽泛请求
+  → 先看仓库
+  → 找到当前真实路径
+  → 最小充分可运行实现
+  → 跑起来
+  → 验证
+  → 不够用了再加最小分支
+```
+
+## 给谁用
+
+| 谁 | 为什么 |
 | --- | --- |
-| 改按钮文案 / 修 typo / 指定 CSS | 放行。不加仪式。 |
-| 「做个知识库 / todo / 文件搜索」 | 收成一条完整路径，不补全大系统。 |
-| 「很慢，加 Redis」 | Redis 只是提案。先测量，再决定。 |
-| 认证迁移这类高风险 | 先问一个普通人能答的问题，或停在不可逆决策前。 |
+| 普通 Codex 用户 | 知道想做什么，但不会写完整软件规格。 |
+| 独立开发 / 快速试做 | 想先拿到能跑的东西，而不是自动生成未来平台。 |
+| 有经验的开发者 | 希望 Codex 在 Redis / 重写 / 微服务之前先看证据。 |
+
+普通用户不需要先成为软件架构师。
+
+这不是通用问题路由，不是产品方法论，也不是全自动软件公司。
+
+## 它实际做什么
+
+在非平凡写代码之前：
+
+- 仓库里能查到的，自己查
+- 技术事实去权威资料查
+- 只问会改变实现路径的用户意图
+- 用户点名的技术默认是提案；明确约束或学习目标则尊重
+- 默认走最小充分可运行路径
+- 现实证明不够用了，再增加最小必要复杂度
+
+明确的小任务直接放行：改文案、修 typo、指定 CSS。
 
 这里的「最小」不是 stub，也不是代码越少越好。
 
-它是 **Minimum Sufficient Working System**：能跑、覆盖核心能力、路径完整、可以验证。今天不够用了，再加最小必要的下一分支。未来的平台，等未来的证据。
+它是 **最小充分可运行系统**：能跑、覆盖核心能力、路径完整、可以验证。
 
-画饼到此为止。饼要能入口：先有一条能跑通的路。
+知识库可以用：录入 → 存储/索引 → 检索 → 结果 → 验证。
+CLI、API、诊断修复走：触发 → 核心行为 → 可观察结果 → 验证。
 
-## 在 Codex 里安装
+## 30 秒安装
 
-把本仓库当作本地 Codex 插件源：
-
-1. 将本仓库加入 Codex 插件源。
-2. Codex 读取 [`.codex-plugin/plugin.json`](./.codex-plugin/plugin.json)。
-3. Codex 加载 [`skills/codex-task-gate/SKILL.md`](./skills/codex-task-gate/SKILL.md)。
-
-插件名：
-
-```text
-codex-task-gate
-```
-
-Skill 名：
-
-```text
-codex-task-gate
-```
-
-也可以只拷 Skill：
+最可靠的是直接装 Skill。官方本地 Skill 位置包括 `$HOME/.agents/skills`，见 [Codex Skills](https://developers.openai.com/codex/skills)。
 
 ```bash
-mkdir -p ~/.codex/skills/codex-task-gate
+mkdir -p ~/.agents/skills/codex-task-gate/agents
 curl -fsSL https://raw.githubusercontent.com/kingtmn/codex-task-gate/main/skills/codex-task-gate/SKILL.md \
-  -o ~/.codex/skills/codex-task-gate/SKILL.md
+  -o ~/.agents/skills/codex-task-gate/SKILL.md
+curl -fsSL https://raw.githubusercontent.com/kingtmn/codex-task-gate/main/skills/codex-task-gate/agents/openai.yaml \
+  -o ~/.agents/skills/codex-task-gate/agents/openai.yaml
 ```
 
-装完后重新开一个 Codex 会话。下一轮才能发现 `$codex-task-gate`。
+重启 Codex，或开一个新会话。然后可以说 `$codex-task-gate`，或直接丢一个宽泛 / 带技术方案的 coding 请求。
 
-## 不安装也可以用
+有些环境也会读 `~/.codex/skills`。如果没出现，把同样的文件拷过去。
 
-不想装插件，也不想依赖 `AGENTS.md`：
+### 不安装也可以用
 
 1. 打开 [`instruction.md`](./instruction.md)。
 2. 复制「Paste the block below」下面的区块。
 3. 粘贴到 Codex Settings → Custom Instructions。
 
-这是自包含版本。Codex 不用读仓库也能按同一套门禁做事。
+Skill 和粘贴二选一即可。
 
-插件和粘贴二选一即可，不必两套一起上。仓库自己的 `AGENTS.md` 冲突时，以仓库为准。
+### 插件安装（可选）
+
+本仓库也带 Codex 插件清单。插件用于 ChatGPT 桌面端 / Codex CLI，[不用于 IDE 扩展](https://developers.openai.com/codex/plugins)。
+
+```bash
+codex plugin marketplace add kingtmn/codex-task-gate
+codex plugin add codex-task-gate@codex-task-gate
+```
+
+然后开一个新的 Codex 会话。如果插件没出现，用上面的 Skill 拷贝。本项目把 Skill 安装当作主路径。
+
+## 例子
+
+**知识库：**「帮我做一个知识库。」
+先看仓库。不要脑补企业架构。做一条能加入内容、能检索、能看见结果的完整路径。
+
+**网站慢 + Redis：**「网站很慢，加 Redis。」
+Redis 是提案。先测量，再改真正的瓶颈。
+
+也适用：todo、小 CLI、小 API、文件搜索、本地自动化。
+
+不适用当成提案的例子：「这个项目必须用 SQLite，因为我正在学 SQLite。」这是明确约束，应保留 SQLite。
+
+## 当前证据
+
+这是早期包（`0.1.0`）。还没有正式 tag / release。
+
+现有测试：
+
+- 4 组 live plan-only 对照
+- 8 个静态 / 规格用例
+- 尚未完成真实 installed-skill 的 Codex 发现测试
+
+早期观察倾向：
+
+- 更少脑补架构
+- 更少不必要的提问
+- 在用户点名某项技术前先诊断
+
+这是信号，不是生产指标。
+
+**下一步是真实安装后的 Codex 评估。**
+
+## 愿景
+
+更多工具增加 Agent 能做的事。
+更好的门禁改善它选择做的事。
+
+长期想法很简单：更好的 coding agent 可能需要更好的入口门禁，而不只是更多工具。
+
+当前任务更土：一个不会架构的人随口提一个软件需求，Codex 仍能找到今天能跑、能验的最小完整路径。
+
+狗子坐门口。架构以后再说。
 
 ## 仓库结构
 
 ```text
+.agents/plugins/marketplace.json
 .codex-plugin/plugin.json
 AGENTS.md
 EXAMPLES.md
@@ -106,12 +185,6 @@ README.zh.md
 skills/codex-task-gate/SKILL.md
 tests/
 ```
-
-## 还想画的饼
-
-理想状态很土：一个不会架构的人随口提一个软件需求，Codex 仍能找到今天能跑、能验的最小完整路径。慢了再量。不够用再加一枝。不要一上来就创业。
-
-狗子坐门口。架构以后再说。
 
 ## License
 

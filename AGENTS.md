@@ -10,6 +10,7 @@ This repository is a Codex-native plugin package. Treat it as a reusable skill, 
 ## Source of truth
 
 - Plugin manifest: `.codex-plugin/plugin.json`
+- Repo marketplace: `.agents/plugins/marketplace.json`
 - Skill behavior: `skills/codex-task-gate/SKILL.md`
 - Custom Instructions copy-paste version: `instruction.md`
 - Usage examples: `EXAMPLES.md`
@@ -20,8 +21,9 @@ This repository is a Codex-native plugin package. Treat it as a reusable skill, 
 Teach Codex a pre-coding gate for software-engineering work:
 
 - inspect self-discoverable gaps before asking,
-- treat user-proposed technology as unverified,
+- treat user-proposed technology as unverified unless it is an explicit constraint,
 - shrink broad requests to a minimum sufficient working path,
+- implement in the current repo only when it is clearly the target project,
 - skip the gate on clear, low-risk tasks.
 
 ## Maintenance rules
@@ -43,3 +45,4 @@ Before publishing a change, confirm:
 - README, instruction, and SKILL describe the same behavior.
 - `instruction.md` can be pasted into Codex Custom Instructions.
 - `SKILL.md` stays short enough to load as a skill, not as an essay.
+- Do not point privacy or terms URLs at LICENSE.

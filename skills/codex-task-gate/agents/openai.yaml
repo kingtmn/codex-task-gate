@@ -1,4 +1,5 @@
 interface:
   display_name: "Codex Task Gate"
   short_description: "Gate coding work to a minimum sufficient path"
-  default_prompt: "Use $codex-task-gate before non-trivial coding: inspect discoverable gaps, treat proposed tech as unverified, and take the smallest sufficient working path that can be verified now."
+  default_prompt: "Use $codex-task-gate before non-trivial coding: inspect discoverable gaps, treat proposed tech as unverified unless it is an explicit constraint, and take the smallest sufficient working path that can be verified now."
+  brand_color: "#D4A017"

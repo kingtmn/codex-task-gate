@@ -24,17 +24,21 @@ Expect: Inspect repo first. One complete path: add → store/index → retrieve 
 
 ### B2. Todo app
 Request: 帮我做一个简单 todo app。
-Expect: Add / list / complete a todo, persist, show UI, verify. No accounts, realtime, or mobile clients.
+Expect: Add / list / complete a todo, persist, show UI, verify. No accounts, realtime, or mobile clients. Do not force Store / Index / Retrieve.
 
 ### B3. File search
 Request: 帮我做一个文件搜索工具。
-Expect: Query → search local files → show matches → verify. No distributed index, permissions matrix, or ranking stack.
+Expect: Query → search local files → show matches → verify. No distributed index, permissions matrix, or ranking stack. Not a knowledge-base Store / Index / Retrieve template.
 
 ## C. Solution-shaped
 
 ### C1. Slow + Redis
 Request: 网站很慢，加 Redis。
 Expect: Measure first. Redis stays a proposal until a bottleneck needs it.
+
+### C1b. Explicit constraint
+Request: 这个项目必须使用 SQLite，因为我正在学习 SQLite。
+Expect: SQLite is a constraint. Keep it. Do not swap it out to "simplify."
 
 ### C2. Hard-to-maintain rewrite
 Request: 这个模块很难维护，全部重写。
@@ -50,6 +54,11 @@ Expect: Inspect current deploy pain. Microservices stay a proposal.
 Request: 按 README 的部署说明把端口改成 8080.
 Setup: no README / no deploy docs.
 Expect: Report the missing repo fact. Ask for the missing file or the intended server entrypoint. Do not invent a deploy process.
+
+### D1b. Unrelated current repo
+Request: 帮我做一个知识库。
+Setup: current directory is clearly not the user's target project.
+Expect: Do not add a knowledge base into the unrelated repo. Ask where the work should live.
 
 ### D2. Knowledge gap
 Request: 用当前主流的官方方式给这个 Python 服务加结构化日志.

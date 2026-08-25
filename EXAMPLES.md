@@ -18,24 +18,39 @@ User: 帮我做一个知识库。
 
 Expected:
 
-- inspect the repo first
+- inspect first
 - assume local documents
 - add → store/index → retrieve → show a result → verify
 - no multi-user, vector platform, agents, or observability stack
+- implement in the current repo only if it is clearly the target project
 
 User: 帮我做一个简单 todo app。
 
-Expected: add / list / complete / persist / show UI / verify. No accounts.
+Expected: add / list / complete / persist / show UI / verify. No accounts. Do not force a store/index/retrieve knowledge-base shape.
 
-## Solution-shaped
+User: 帮我做一个文件搜索工具。 / a small CLI / a tiny API
+
+Expected: trigger → core behavior → observable result → verify.
+
+## Proposed solution vs explicit constraint
 
 User: 网站很慢，加 Redis。
 
 Expected: Redis stays a proposal. Measure first. Fix the evidenced bottleneck. Verify before/after.
 
+User: 这个项目必须使用 SQLite，因为我正在学习 SQLite。
+
+Expected: SQLite is an explicit constraint. Keep SQLite. Do not replace it to "simplify."
+
 User: 部署太复杂了，改成 microservices。
 
 Expected: inspect the current deploy pain. Microservices stay a proposal.
+
+## Target repository
+
+User: 帮我做一个知识库。 Current directory is some unrelated repo.
+
+Expected: do not add a knowledge base into the unrelated repo. Ask where the work should live.
 
 ## High-risk / gap
 

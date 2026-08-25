@@ -2,14 +2,13 @@
 name: codex-task-gate
 description: >
   Gate non-trivial coding work before implementation. Inspect the repo and
-  authoritative sources first, treat user-proposed technology as unverified,
-  and shrink broad requests to a minimum sufficient working path that can be
-  run and verified now. Use for broad builds, solution-shaped requests such as
-  adding Redis, rewriting a module, or moving to microservices, or when a
-  missing user decision would change the implementation path. Skip clear
-  low-risk tasks such as copy changes, typos, and specified CSS tweaks.
-metadata:
-  short-description: Gate coding work to a minimum sufficient path
+  authoritative sources first, treat user-proposed technology as unverified
+  unless it is an explicit constraint, and shrink broad requests to a minimum
+  sufficient working path that can be run and verified now. Use for broad
+  builds, solution-shaped requests such as adding Redis, rewriting a module,
+  or moving to microservices, or when a missing user decision would change the
+  implementation path. Skip clear low-risk tasks such as copy changes, typos,
+  and specified CSS tweaks.
 ---
 
 # Codex Task Gate
@@ -43,15 +42,21 @@ Resolve self-discoverable uncertainty before asking the user.
 
 If intent is too unclear to know where to look, ask one intent question first.
 
-## Proposed solution vs actual technical need
+## Proposed solution vs explicit constraint
 
-A user-named technology is a proposal, not a verified need.
+A user-named technology may be either:
 
-"The site is slow. Add Redis." Redis is the proposal. Default path:
+- a proposed solution, which should be verified against the actual need;
+- an explicit user constraint or learning goal, which should be respected.
+
+"The site is slow. Add Redis." Redis is a proposal. Default path:
 inspect → diagnose → fix → verify.
 
-Treat the same way: rewrite this module, use microservices, build an agent,
-replace the database, or any other direction-shaped request.
+"This project must use SQLite because I am learning SQLite." SQLite is a
+constraint. Keep it.
+
+Treat rewrite this module, use microservices, build an agent, or replace the
+database as proposals unless the user made them a constraint.
 
 ## Minimum sufficient working path
 
@@ -61,7 +66,10 @@ lines of code."
 
 Default shape:
 
-Input → Store / Index → Retrieve → Observable result → Verification
+Input / Trigger → Core behavior → Observable result → Verification
+
+Do not force Store / Index / Retrieve onto CLI, API, UI, or diagnostic work.
+That shape belongs to retrieval-style examples such as a knowledge base.
 
 Add multi-user, permissions, distributed storage, advanced vector stacks,
 reranking, agents, workflow engines, observability platforms, scale
@@ -69,6 +77,15 @@ architecture, or extension frameworks only when the current request, repo, or
 verification evidence requires them.
 
 Future needs wait for evidence.
+
+## Target repository
+
+Implement in the current repository only when it clearly matches the user's
+target project.
+
+If the repo-to-target relationship is unclear and a different choice would
+change where the work lands, ask one question. Do not modify an unrelated repo
+because it happens to be the current working directory.
 
 ## Clarification rule
 
@@ -82,13 +99,12 @@ Ask in ordinary-user language. Prefer concrete choices over architecture
 interviews.
 
 Audience, scale, extra features, or content type that still fit
-Input → Store / Index → Retrieve → Result are not path-changing. Skip them.
+Input / Trigger → Core behavior → Observable result → Verification are not
+path-changing. Skip them.
 
 Instead of "Define the knowledge-system architecture," ask:
 "Do you want (1) a smallest runnable version from scratch, or (2) to add it
-to the current project?"
-
-If a current project exists, add to it unless the user asked for a new one.
+to this project?"
 
 One question at a time. Usually at most two rounds.
 
@@ -128,10 +144,11 @@ On non-trivial work only, state briefly:
 
 User: "帮我做一个知识库。"
 
-Inspect the repo first. Do not interview for corpus, users, or platform.
-Assume local documents. If a project exists, add there. Build one complete
-path: add content → store/index → retrieve → show a result → verify. Later
-requirements or failed verification add a branch.
+Inspect first. Do not interview for corpus, users, or platform. Assume local
+documents. If the current repository is clearly the target project, add there;
+if not, ask where to put it. Build one complete path: add content →
+store/index → retrieve → show a result → verify. Later requirements or failed
+verification add a branch.
 
 ## Example B — Diagnostic
 
@@ -149,12 +166,13 @@ Redis, a queue, or microservices. Those wait for evidence.
 3. Authoritative technical facts are researched, not guessed or user-explained.
 4. Ask only user-intent questions that change the implementation path.
 5. User-proposed solutions are not automatically real technical need.
-6. Broad requests converge small, not into a larger system.
-7. Minimum means Minimum Sufficient Working System, not a stub.
-8. Future needs stay out of scope until evidence requires them.
-9. After the current implementation is shown insufficient, add the smallest necessary branch.
-10. Runnable and correctly verified beats large architecture.
-11. Half-open questions stay open; do not fake closure.
-12. This skill covers Codex-familiar software-engineering entry problems only.
+6. Explicit user constraints and learning goals are respected.
+7. Broad requests converge small, not into a larger system.
+8. Minimum means Minimum Sufficient Working System, not a stub.
+9. Implement in the current repo only when it is clearly the target project.
+10. After the current implementation is shown insufficient, add the smallest necessary branch.
+11. Runnable and correctly verified beats large architecture.
+12. Half-open questions stay open; do not fake closure.
+13. This skill covers Codex-familiar software-engineering entry problems only.
 
 Do not restate general Git, deletion, testing, or repo-safety rules already present in Codex instructions.

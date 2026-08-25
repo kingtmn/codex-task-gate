@@ -1,7 +1,9 @@
 # ON / OFF results
 
 Method: plan-only paired runs against `tests/fixtures/mini-site`.
-Codex CLI batch exec was blocked in this environment, so the live pairs used independent plan-only agents. Remaining cases are scored from the skill rules plus that fixture.
+Codex CLI batch exec was blocked in an earlier environment, so the live pairs used independent plan-only agents. Remaining cases are scored from the skill rules plus that fixture.
+
+This is **not** a completed real installed-skill Codex discovery test.
 
 Scores: PASS / PARTIAL / FAIL.
 
@@ -20,11 +22,13 @@ Scores: PASS / PARTIAL / FAIL.
 | --- | --- | --- |
 | A2 Typo | Skip-gate, one-line fix | PASS |
 | A3 Specified CSS | Skip-gate, apply given styles | PASS |
-| B2 Todo app | Add/list/complete/persist/verify; no accounts | PASS |
+| B2 Todo app | Add/list/complete/persist/verify; no accounts; not a KB retrieve template | PASS |
 | B3 File search | Query → local search → matches → verify | PASS |
+| C1b SQLite constraint | Keep SQLite as an explicit constraint | PASS (spec) |
 | C2 Rewrite module | Inspect pain; surgical fix unless rewrite is evidenced | PASS |
 | C3 Microservices | Inspect deploy pain; microservices stay a proposal | PASS |
 | D1 Missing README port change | Report missing repo fact; do not invent deploy | PASS |
+| D1b Unrelated current repo | Do not modify the wrong repo | PASS (spec) |
 | D2 Structured logging | Look up current official guidance; do not ask the user to explain the library | PASS |
 
 ## Checklist
@@ -39,4 +43,8 @@ Scores: PASS / PARTIAL / FAIL.
 
 ## Known limit
 
-This is not a live Codex-with-installed-skill session. It tests the instruction text, not discovery/triggering of `$codex-task-gate` inside Codex.
+This tests the instruction text, not discovery/triggering of `$codex-task-gate` inside a real Codex session after install.
+
+C1b and D1b were added as specification cases in the pre-release pass. They have not had a live ON/OFF pair yet.
+
+Real installed-skill Codex evaluation is next.
