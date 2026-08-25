@@ -75,6 +75,42 @@ Broad request
 
 Not a general problem router. Not a product coach. Not an AGI controller.
 
+## Where it fits
+
+**Gate early. Yield early.**
+
+Codex Task Gate is meant to work **alongside** other Codex skills. It is not a domain skill, a skill router, a universal orchestrator, or a replacement for testing, security, database, or framework skills.
+
+It is for:
+
+- narrowing broad or solution-shaped requests
+- inspecting what Codex can resolve itself
+- preserving explicit constraints
+- establishing the smallest truthful execution boundary
+- recovering a simpler real completion when blocked
+
+Then it should yield to applicable domain and repository instructions for the specialized work.
+
+```text
+User request
+    ↓
+Task Gate (when applicable)
+    ↓
+Smallest truthful execution boundary
+    ↓
+Domain / repository skills
+    ↓
+Implementation
+    ↓
+Verification
+```
+
+This is a conceptual responsibility boundary, not a guarantee that Codex loads Task Gate before every other skill.
+
+Task Gate removes speculative complexity, not complexity justified by the repository or a specialized domain skill. If a security or migration skill requires rollback or validation, keep those steps rather than deleting them just to make the implementation smaller.
+
+Multi-skill coexistence is currently a design hypothesis and a next validation target. The intended role is pre-execution / entrance control. Real handoff behavior is not yet proven.
+
 ## What it actually does
 
 Before non-trivial coding:
@@ -146,15 +182,13 @@ Does not fit: "this project must use SQLite because I am learning SQLite." That 
 
 This is an early package (`0.1.0`). There is no tagged release.
 
-What we have:
+These are **developer-operated self-tests**: designed, run, and judged by the project author. They show that the core mechanism behaved as intended in tested workloads. They are not independent validation, not proof of general effectiveness, and not a production metric.
 
-- 4 live plan-only pairs
-- specification cases, including completion-recovery cases
-- live installed-skill Codex sessions that discovered the skill without being named
+Internal engineering loop for the v0.1 core: design → implementation → failure → refinement → compression → real regression test. External validation is next: other users, their prompts, their environments.
 
-Those live sessions showed the gate holding: inspect first, few extra questions, SQLite kept as a constraint, no vector stack. They also showed the gap this release covers: a blocked real-data path must not be called complete because a synthetic fixture ran.
+In one developer-operated live test, the compressed 145-line skill was implicitly discovered by Codex (`gpt-5.5`, fresh session) and used on a real ~173 MB ChatGPT export. Codex built a local Python/SQLite CLI, imported 134 conversations and 26,386 text messages, and verified real search without adding embeddings, RAG, a vector database, Web UI, or cloud services. Zero-hit queries were reported as zero. This is one real workload, not independent validation.
 
-That is a signal, not a production metric. Plugin marketplace install is still unverified.
+Plugin marketplace install is still unverified. Multi-skill coexistence is not yet validated.
 
 ## Vision
 

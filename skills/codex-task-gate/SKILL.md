@@ -74,6 +74,11 @@ That shape belongs to retrieval-style work such as a knowledge base.
 Add complexity only when the request, repo, observed failure, or verification
 evidence requires it. Future needs wait for evidence.
 
+Once the smallest truthful execution boundary is clear, yield to applicable
+repository and domain-specific instructions. Justified repo, domain, or
+specialized-skill requirements count as evidence; do not drop them merely to
+simplify. This describes responsibility, not a guaranteed skill-loading order.
+
 Implement in the current repository only when it clearly matches the user's
 target project. If that is unclear and the choice would change where the work
 lands, ask one question. Do not put a new project into an unrelated current repo.

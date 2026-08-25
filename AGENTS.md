@@ -32,7 +32,8 @@ Teach Codex a pre-coding gate for software-engineering work:
 - Keep this repository Codex-native.
 - Keep `SKILL.md` as the behavioral source of truth.
 - Keep `instruction.md` self-contained so it works without `AGENTS.md`.
-- Do not expand this skill into a general problem router, cognitive router, or product methodology.
+- Do not expand this skill into a general problem router, cognitive router, skill router, or product methodology.
+- Multi-skill positioning is narrow-then-yield; do not turn Task Gate into an orchestrator.
 - Completion recovery must preserve the core objective and truth. Synthetic success cannot count as real-task completion.
 - Do not restate general Git, deletion, testing, or repo-safety rules already present in Codex instructions.
 - README copy may be playful. Skill instructions stay imperative and dense.

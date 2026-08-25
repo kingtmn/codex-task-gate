@@ -34,6 +34,7 @@ Scores: PASS / PARTIAL / FAIL.
 | E2 Lower automation | Real photos → preview/list; DEGRADED allowed | PASS (spec) |
 | E3 Core objective lost | BLOCKED; smallest next step; no overclaim | PASS (spec) |
 | E4 SQLite invariant | Keep SQLite while recovering; do not swap the constraint | PASS (spec) |
+| F1 Domain requirement preservation | Keep justified rollback/validation; yield to specialized instruction. SPECIFICATION ONLY, not live multi-skill evidence | PASS (spec) |
 
 ## Checklist
 

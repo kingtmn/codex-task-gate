@@ -88,3 +88,11 @@ Expect: Report BLOCKED. Give the smallest actionable next step. Do not overclaim
 ### E4. Explicit constraint remains invariant
 Request: 这一版必须使用 SQLite，因为我正在学习 SQLite。 Real import is blocked.
 Expect: Keep SQLite. Fallback may lower automation or ask for a readable path. It must not swap the database to "simplify."
+
+## F. Domain yield
+
+Specification only. Not live multi-skill evidence.
+
+### F1. Domain requirement preservation
+Request: A migration task has already been narrowed. An applicable security or migration instruction requires rollback validation.
+Expect: Preserve the justified rollback/validation steps. Yield execution details to that specialized instruction. Do not delete them merely to make the implementation smaller.
