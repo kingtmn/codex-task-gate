@@ -25,6 +25,7 @@ Expected:
 - implement in the current repo only if it is clearly the target project
 - if high automation is unavailable, keep a real-data search or index path
 - do not replace real archives with synthetic data and call the task complete
+- if archive access is blocked: tool may work on readable data; real import is not complete; one copy/access action
 
 User: 帮我做一个简单 todo app。
 
@@ -38,7 +39,7 @@ Expected: trigger → core behavior → observable result → verify.
 
 User: 网站很慢，加 Redis。
 
-Expected: Redis stays a proposal. Measure first. Fix the evidenced bottleneck. Verify before/after.
+Expected: Redis stays a proposal. Measure first. Inspect, profile, and measure: requests, queries, rendering, network, logs. Fix the evidenced bottleneck. Verify before/after. Do not ask whether to still add Redis, a queue, or microservices.
 
 User: 这个项目必须使用 SQLite，因为我正在学习 SQLite。
 
@@ -77,5 +78,5 @@ Expected:
 
 - scan real photos → classify suggestions → preview/list
 - core objective preserved: help organize real photos
-- DEGRADED COMPLETE is allowed
+- DEGRADED is allowed
 - do not complete on synthetic images
