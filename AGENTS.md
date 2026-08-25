@@ -23,6 +23,7 @@ Teach Codex a pre-coding gate for software-engineering work:
 - inspect self-discoverable gaps before asking,
 - treat user-proposed technology as unverified unless it is an explicit constraint,
 - shrink broad requests to a minimum sufficient working path,
+- if that path is blocked, recover a lower-automation real completion before asking the user,
 - implement in the current repo only when it is clearly the target project,
 - skip the gate on clear, low-risk tasks.
 
@@ -32,6 +33,7 @@ Teach Codex a pre-coding gate for software-engineering work:
 - Keep `SKILL.md` as the behavioral source of truth.
 - Keep `instruction.md` self-contained so it works without `AGENTS.md`.
 - Do not expand this skill into a general problem router, cognitive router, or product methodology.
+- Completion recovery must preserve the core objective and truth. Synthetic success cannot count as real-task completion.
 - Do not restate general Git, deletion, testing, or repo-safety rules already present in Codex instructions.
 - README copy may be playful. Skill instructions stay imperative and dense.
 - Keep examples concrete and code-adjacent.

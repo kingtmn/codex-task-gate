@@ -5,7 +5,7 @@
  (    @\___
  /         O
 /   (_____/
-/_____/   U     such inspect. very minimum. wow verify.
+/_____/   U     such inspect. very finish. wow verify.
 ```
 
 Codex can write code fast.
@@ -14,6 +14,9 @@ It can also build the wrong thing fast.
 **Codex Task Gate sits before that happens.**
 
 Not a bigger brain. A better gate dog.
+
+Build less. Finish more.
+When automation fails, the goal should not fail with it.
 
 English | [Simplified Chinese](./README.zh.md)
 
@@ -35,7 +38,7 @@ The problem is not that Codex cannot write code.
 
 The problem is that **vague intent can become precise code before anyone notices the intent was vague.**
 
-Install this if you want Codex to inspect first, ask less, and ship a path that actually runs.
+Install this if you want Codex to inspect first, ask less, ship a path that actually runs, and keep working toward a usable result when the preferred path breaks.
 
 ## Without / with
 
@@ -58,6 +61,7 @@ Broad request
   → smallest sufficient working implementation
   → run
   → verify
+  → if blocked: lower automation, keep the real goal
   → expand only when required
 ```
 
@@ -80,6 +84,7 @@ Before non-trivial coding:
 - ask only path-changing user intent
 - treat named technologies as proposals unless they are explicit constraints
 - default to a minimum sufficient working path
+- if that path is blocked, lower automation before handing the task back
 - add complexity after evidence, not before
 
 Clear tiny tasks skip the gate: button copy, typos, specified CSS.
@@ -128,6 +133,7 @@ Then start a new Codex session. If the plugin does not appear, use the skill cop
 
 **Knowledge base:** "帮我做一个知识库。"
 Inspect. Do not invent an enterprise stack. One complete path that can add, retrieve, and show a result.
+If the preferred path cannot read the real archive, do not finish on fake sample data. Keep a real search or index path, or say what already works and the one smallest next step.
 
 **Slow site + Redis:** "网站很慢，加 Redis。"
 Redis is a proposal. Measure first. Fix the evidenced bottleneck.
@@ -143,18 +149,12 @@ This is an early package (`0.1.0`). There is no tagged release.
 What we have:
 
 - 4 live plan-only pairs
-- 8 static / specification cases
-- no completed real installed-skill Codex discovery test
+- specification cases, including completion-recovery cases
+- live installed-skill Codex sessions that discovered the skill without being named
 
-Early evaluation suggests:
+Those live sessions showed the gate holding: inspect first, few extra questions, SQLite kept as a constraint, no vector stack. They also showed the gap this release covers: a blocked real-data path must not be called complete because a synthetic fixture ran.
 
-- less speculative architecture
-- fewer unnecessary questions
-- better diagnosis before user-named technology
-
-That is a signal, not a production metric.
-
-**Real installed-skill Codex evaluation is next.**
+That is a signal, not a production metric. Plugin marketplace install is still unverified.
 
 ## Vision
 
@@ -163,7 +163,7 @@ A better gate improves what it chooses to do.
 
 The long-term idea is simple: better coding agents may need better entry gates, not just more tools.
 
-The current job is smaller: when an ordinary person gives Codex a fuzzy coding request, Codex still finds a path that runs today, does the core thing, and can be checked.
+The current job is smaller: when an ordinary person gives Codex a fuzzy coding request, Codex still finds a path that runs today, does the core thing, and can be checked. If the fancy path breaks, it should still try to finish the real job.
 
 Such future. Very later. Wow now.
 

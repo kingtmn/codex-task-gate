@@ -30,6 +30,10 @@ Scores: PASS / PARTIAL / FAIL.
 | D1 Missing README port change | Report missing repo fact; do not invent deploy | PASS |
 | D1b Unrelated current repo | Do not modify the wrong repo | PASS (spec) |
 | D2 Structured logging | Look up current official guidance; do not ask the user to explain the library | PASS |
+| E1 Real data blocked | Diagnose; no synthetic-as-complete; smallest unblock action | PASS (spec) |
+| E2 Lower automation | Real photos → preview/list; DEGRADED COMPLETE allowed | PASS (spec) |
+| E3 Core objective lost | BLOCKED; smallest next step; no overclaim | PASS (spec) |
+| E4 SQLite invariant | Keep SQLite while recovering; do not swap the constraint | PASS (spec) |
 
 ## Checklist
 
@@ -39,12 +43,13 @@ Scores: PASS / PARTIAL / FAIL.
 4. Faster path to a runnable slice — PASS after B1 fix
 5. Easier verification — PASS
 6. Less "user named a tech → do that tech" — PASS (C1)
-7. Extra burden on clear small tasks — PASS (A1)
+8. Extra burden on clear small tasks — PASS (A1)
+9. Blocked real-data path is not counted complete via synthetic success — PASS (spec, E1/E3)
+10. Lower automation may still preserve the objective — PASS (spec, E2)
+11. Explicit constraint survives fallback — PASS (spec, E4)
 
 ## Known limit
 
-This tests the instruction text, not discovery/triggering of `$codex-task-gate` inside a real Codex session after install.
+The A–D table still scores instruction text plus earlier plan-only pairs. E1–E4 are specification regressions from live ChatGPT-archive sessions; they have not had a new ON/OFF pair.
 
-C1b and D1b were added as specification cases in the pre-release pass. They have not had a live ON/OFF pair yet.
-
-Real installed-skill Codex evaluation is next.
+Installed-skill implicit discovery has been observed in live Codex sessions. Plugin marketplace install is still unverified.

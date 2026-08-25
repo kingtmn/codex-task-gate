@@ -1,7 +1,7 @@
 {
   "name": "codex-task-gate",
   "version": "0.1.0",
-  "description": "A Codex pre-coding gate that inspects first, treats proposed tech as unverified unless it is an explicit constraint, and shrinks broad requests to a minimum sufficient working path.",
+  "description": "A Codex pre-coding gate that inspects first, treats proposed tech as unverified unless it is an explicit constraint, shrinks broad requests to a minimum sufficient working path, and recovers a lower-automation real completion when the preferred path is blocked.",
   "author": {
     "name": "kingtmn",
     "url": "https://github.com/kingtmn"
@@ -20,7 +20,7 @@
   "interface": {
     "displayName": "Codex Task Gate",
     "shortDescription": "Gate coding work to a minimum sufficient path",
-    "longDescription": "A lightweight Codex skill that stops incomplete wording from becoming a large codebase. It inspects the repo and authoritative sources first, treats user-named technologies as proposals unless they are explicit constraints, and defaults broad requests to a runnable, verifiable path.",
+    "longDescription": "A lightweight Codex skill that stops incomplete wording from becoming a large codebase. It inspects the repo and authoritative sources first, treats user-named technologies as proposals unless they are explicit constraints, defaults broad requests to a runnable, verifiable path, and lowers automation before handing a blocked task back to the user.",
     "developerName": "kingtmn",
     "category": "Productivity",
     "capabilities": [
