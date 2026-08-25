@@ -184,11 +184,17 @@ This is an early package (`0.1.0`). There is no tagged release.
 
 These are **developer-operated self-tests**: designed, run, and judged by the project author. They show that the core mechanism behaved as intended in tested workloads. They are not independent validation, not proof of general effectiveness, and not a production metric.
 
-Internal engineering loop for the v0.1 core: design → implementation → failure → refinement → compression → real regression test. External validation is next: other users, their prompts, their environments.
+Internal engineering loop for the v0.1 core: design → implementation → failure → refinement → compression → real regression test. External validation is next: other users, their prompts, their environments. Plugin marketplace install is still unverified. Multi-skill coexistence is not yet validated.
 
-In one developer-operated live test, the compressed 145-line skill was implicitly discovered by Codex (`gpt-5.5`, fresh session) and used on a real ~173 MB ChatGPT export. Codex built a local Python/SQLite CLI, imported 134 conversations and 26,386 text messages, and verified real search without adding embeddings, RAG, a vector database, Web UI, or cloud services. Zero-hit queries were reported as zero. This is one real workload, not independent validation.
+### Live tests
 
-Plugin marketplace install is still unverified. Multi-skill coexistence is not yet validated.
+**Mac cleaner.** A fresh Codex session discovered the installed skill without being named, reduced a broad cleanup request to a small read-only local scanner, and actually scanned the machine. The first run double-counted caches; Codex fixed the logic and reran. Final candidate cache total was about 33.4 GB. No GUI, daemon, database, or cloud stack.
+
+**ChatGPT knowledge base.** On the compressed 145-line skill, a fresh `gpt-5.5` session discovered the skill, kept an explicit SQLite constraint, and completed a real ~173 MB ChatGPT export: 134 conversations, 26,386 text messages, local CLI only. Search returned 122 hits for 费曼 and truthful zeros for J-space and FENGQUN. No embeddings, RAG, vector database, Web UI, or cloud.
+
+These are developer-operated self-tests, not independent validation or production metrics.
+
+Full history, including failed runs: [EVALUATION.md](./EVALUATION.md).
 
 ## Vision
 
@@ -212,6 +218,7 @@ instruction.md
 LICENSE
 README.md
 README.zh.md
+EVALUATION.md
 skills/codex-task-gate/SKILL.md
 tests/
 ```
